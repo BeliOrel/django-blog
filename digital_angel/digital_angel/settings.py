@@ -126,6 +126,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# files that are stored in file system and not in DB
+# folder where the uploaded files will be saved
+# BASE_DIR -> base folder of this project
+# only used when in development stage
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# public url of MEDIA_ROOT directory
+MEDIA_URL = '/media/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # we change default redirect from '/accounts/profile/'
