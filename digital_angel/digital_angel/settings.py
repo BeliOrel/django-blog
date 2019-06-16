@@ -127,3 +127,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# we change default redirect from '/accounts/profile/'
+LOGIN_REDIRECT_URL = 'blog-home'
+
+# redirect to login if you want to access the page
+# that's not available when not logged in
+LOGIN_URL = 'login'
