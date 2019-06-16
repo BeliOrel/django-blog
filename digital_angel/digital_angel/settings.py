@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # overwrite old files when they are updated
+    'django_cleanup',
 
     # own
     'blog',
