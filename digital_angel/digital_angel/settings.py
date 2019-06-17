@@ -144,3 +144,20 @@ LOGIN_REDIRECT_URL = 'blog-home'
 # redirect to login if you want to access the page
 # that's not available when not logged in
 LOGIN_URL = 'login'
+
+# for emails (reset password,...)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# settings for mailtrap.io
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+
+# sensitive information -> we should not write directly here but instead
+# create environment variable
+# EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+# but since I'm using fake email (mailtrap.io) anyway I can just write
+EMAIL_HOST_USER = '122d165e913133'
+EMAIL_HOST_PASSWORD = 'c207bda3a5272a'
