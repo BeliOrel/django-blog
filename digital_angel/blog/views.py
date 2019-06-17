@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # LoginRequiredMixin -> this takes care of the pages that require Login ->
 # if not logged in, it redirects to login page
 # UserPassesTestMixin -> allows only the right owner to edit the data
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 
 from django.views.generic import (
                                 ListView,
@@ -32,6 +33,18 @@ class PostListView(ListView):
     # by default it's named 'object_list'
     context_object_name = 'posts'
     ordering = ['-date_posted'] # newest at the top
+    paginate_by = 5 # 5 posts per page
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 class PostDetailView(DetailView):
     model = Post
