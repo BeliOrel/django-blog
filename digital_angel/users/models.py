@@ -11,8 +11,8 @@ class Profile(models.Model):
 
     # we are gonna overwrite the save method
     # this is gonna resize the profile image 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
